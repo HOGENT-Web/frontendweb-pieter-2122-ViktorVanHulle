@@ -1,0 +1,435 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* login */
+
+#login, #login > *{
+  display: flex;
+  flex-direction: column;
+}
+
+#login {
+  padding: 40px;
+  margin: auto;
+  width: 450px;
+  font-size: 18px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.5);
+  max-height: 400px;
+}
+
+#login .remember {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0;
+}
+
+.form-header {
+  padding-bottom: 48px;
+}
+
+input {
+  padding: 10px 5px;
+  border-radius: 5px;
+}
+
+form input:not(input[type=checkbox]){
+  border: none;
+  width: 400px;
+}
+
+label {
+  /* text-align: left; */
+}
+
+input[type=email], input[type=submit] {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+input[type=email] {
+  width: 400px;
+  padding: 4px;
+  float: right;
+}
+
+input[type=submit] {
+  padding: 8px;
+  width: 80%;
+  align-self: center;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+}
+
+/* footer */
+
+footer {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+footer ul {
+  display: flex;
+  list-style-type: none;
+}
+
+footer li {
+  margin-right: 10px;
+}
+
+footer a {
+  text-decoration: underline;
+}
+
+footer a:hover {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* navbar */
+
+nav button {
+ position: absolute;
+ right: 20px;
+ top: 15px;
+ color: white;
+ background-color: #000;
+ padding: 10px;
+ border-radius: 20px;
+ width: 120px;
+ font-size: 14px;
+ /* text-transform: uppercase; */
+ text-align: center;
+ letter-spacing: 3px;
+ font-weight: 600;
+ cursor: pointer;
+}
+
+nav button:hover {
+  background-color: transparent;
+  color: #000;
+  transition: all 1s ease;
+}
+/* canvas */
+
+#c {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  /* opacity: 1; */
+  /* transition: opacity 1500ms ease-out; */
+}
+
+/* Welcome page */
+#welcome, #login {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo {
+  position: absolute;
+  top: 10%;
+  left: 0%;
+  right: 0%;
+}
+
+.logo img {
+ width: 120px;
+}
+
+.logo p {
+  font-style: oblique;
+  font-weight: 600;
+}
+
+.content {
+  width: 70rem;
+}
+
+.content-inner p {
+  font-size: 48px;
+  margin-bottom: 10px;
+  font-family: 'EB Garamond', serif;
+}
+
+.content-inner span {
+  text-transform: uppercase;
+  /* font-style: italic; */
+  font-size: 24px;
+  color: #585655;
+  font-family: 'EB Garamond', serif;
+}
+
+.enter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 15%;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.enter:hover > img {
+  animation: move 3s ease-out infinite;
+}
+
+.enter:hover {
+  color:  rgb(152, 14, 14);
+  transition: color 500ms;
+}
+
+@keyframes move {
+  25% {
+    opacity: 1;
+ 
+  }
+  33% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+  67% {
+    opacity: 1;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+  }
+}
+
+/* Main */
+
+/* Styling fundamentals by How 2 Create - Binary Tree Structure in HTML5 & CSS3*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  background: #f5f5f5;
+  /* font-family: "Poppins", sans-serif; */
+  font-family: 'EB Garamond', serif;
+}
+
+.tree {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.tree ul {
+  padding-top: 20px;
+  position: relative;
+  transition: 0.5s;
+}
+
+.tree li {
+  display: inline-table;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: 10px;
+  transition: 0.5s;
+}
+
+.tree li::before,
+.tree li:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 2px solid  #533722;
+  width: 51%;
+  height: 10px;
+}
+
+/* marriage */
+/* .tree .marriage> a:before,
+.tree .marriage> a:after {
+  content: "";
+  position: absolute;
+  top: 80px;
+  right: 47%;
+  border-top: 2px solid  #533722;
+  width: 5%;
+  height: 40px;
+} */
+
+.tree li:after {
+  right: auto;
+  left: 50%;
+  border-left: 2px solid  #533722;
+}
+
+.tree li:only-child:after,
+.tree li:only-child:before {
+  display: none;
+}
+
+.tree li:only-child {
+  padding-top: 0;
+}
+
+.tree li:first-child:before, .tree li:last-child:after {
+  border: 0 none;
+}
+
+.tree li:last-child:before {
+  border-right: 2px solid  #533722;
+  border-radius: 0px 5px 0px 0px;
+}
+
+.tree li:first-child:after {
+  border-radius: 5px 0px 0px 0px;
+}
+
+.tree ul ul:before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 50.3%;
+  border-left: 2px solid  #533722;
+  width: 0;
+  height: 20px;
+}
+
+.tree a {
+  background: url('./assets/images/80784-goods-treacle-photography-paper-tart-baked-parchment.png') center;
+  background-size: cover;
+  padding: 18px;
+  display: inline-flex;
+  flex-direction: column;
+  border-radius: 5px;
+  text-decoration-line: none;
+  border-radius: 5px;
+  transition: .5s;
+  margin: 10px;
+}
+
+.tree a img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px !important;
+  border-radius: 100px;
+  margin: auto;
+}
+
+.tree a span {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 10px;
+  color: #252525;
+  font-size: 18px;
+  /* text-transform: uppercase; */
+  letter-spacing: 1px;
+  font-weight: 700;
+  font-family: 'Dancing Script', cursive;
+}
+
+/* Hover-Section */
+
+.tree ul li:hover a {
+  padding: 30px;
+}
+
+
+
+/* .tree li a:hover, .tree li a:hover img, .tree li a:hover span, .tree li a:hover+ul li a {
+  background: #c8e4f8;
+  color: #000;
+  box-shadow: 0px 0px 0px -10px #555b6e;
+}
+
+
+.tree li a:hover span {
+  border: 1px solid #94a0b4;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.tree li a:hover+ul li:after, .tree li a:hover+ul li:before, .tree li a:hover+ul:before, .tree li a:hover+ul:before {
+  border-color: #533722;
+}
+
+.tree a:hover {
+    box-shadow: 0px 0px 0px 8px #e20e0e;
+} */
+
+/* Info */
+
+.info {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  background: rgb(239, 238, 238);
+  box-shadow: 0px 0px 5px 1px #5f5f5f;
+  text-align: center;
+}
+
+.info h1 {
+  background: #555b6e;
+}
+
+.info-1 {
+  background: #adb5bd;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  align-items: center;
+}
+
+.info-1 ul {
+  list-style-type: none;
+  text-align: left;
+}
+
+.info-1 ul li:first-child {
+  font-weight: 600;
+}
+
+.info-1 ul li:last-child {
+  font-size: smaller;
+}
+
+.info-2 {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding-left: 50px;
+  text-align: left;
+}
+
+.info-2 ul li:before {
+  content: "";
+  position: absolute;
+  background-color: #000;
+  min-height: 80px;
+  left: 34px;
+  width: 2px;
+}
+
+
+
+
+
+
+
