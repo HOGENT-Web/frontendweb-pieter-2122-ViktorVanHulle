@@ -1,5 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+/* Main */
+
+/* Styling fundamentals by How 2 Create - Binary Tree Structure in HTML5 & CSS3*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  background: #f5f5f5;
+  font-family: 'EB Garamond', serif;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* underline */
+.line {
+  text-decoration: underline;
+}
+
 /* login */
 
 #login, #login > *{
@@ -8,58 +36,59 @@
 }
 
 #login {
+  position: relative;
   padding: 40px;
   margin: auto;
-  width: 450px;
-  font-size: 18px;
+  width: fit-content;
+  font-size: 22px;
   border-radius: 10px;
   box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.5);
-  max-height: 400px;
+  max-height: 500px;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #login .remember {
   display: flex;
   flex-direction: row;
-  padding: 10px 0;
 }
 
 .form-header {
   padding-bottom: 48px;
 }
 
+.form-footer {
+  font-size: 20px;
+  text-align: left;
+}
+
 input {
-  padding: 10px 5px;
   border-radius: 5px;
 }
 
-form input:not(input[type=checkbox]){
+input, form p {
+  padding: 10px 5px;
+}
+
+form input[type=email], input[type=password]{
   border: none;
-  width: 400px;
-}
-
-label {
-  /* text-align: left; */
-}
-
-input[type=email], input[type=submit] {
-  display: block;
-  font-size: 18px;
   margin-bottom: 15px;
 }
 
-input[type=email] {
-  width: 400px;
-  padding: 4px;
-  float: right;
-}
 
 input[type=submit] {
-  padding: 8px;
-  width: 80%;
-  align-self: center;
   background-color: green;
+  border: 2px solid green;
   color: white;
   cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: transparent;
+  color: green;
+  transition: all 1s ease;
 }
 
 /* footer */
@@ -68,6 +97,7 @@ footer {
   position: absolute;
   bottom: 20px;
   left: 20px;
+  font-family: 'EB Garamond', serif;
 }
 
 footer ul {
@@ -77,41 +107,104 @@ footer ul {
 
 footer li {
   margin-right: 10px;
-}
-
-footer a {
   text-decoration: underline;
+  text-transform: uppercase ;
 }
 
-footer a:hover {
+footer li:hover {
   font-weight: 600;
   cursor: pointer;
 }
 
 /* navbar */
 
+/* nav {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+} */
+
 nav button {
+  right: 20px;
+  top: 15px;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+nav button:not(.succes) {
  position: absolute;
- right: 20px;
- top: 15px;
  color: white;
  background-color: #000;
+ border-color: #000;
  padding: 10px;
  border-radius: 20px;
  width: 120px;
- font-size: 14px;
- /* text-transform: uppercase; */
  text-align: center;
- letter-spacing: 3px;
- font-weight: 600;
- cursor: pointer;
 }
 
-nav button:hover {
+nav button:hover:not(.succes) {
   background-color: transparent;
   color: #000;
   transition: all 1s ease;
 }
+
+nav .succes {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+nav .succes img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+} 
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* .dropdown:hover .succes {
+  background-color: #f1f1f1;
+} */
+
+
 /* canvas */
 
 #c {
@@ -125,7 +218,8 @@ nav button:hover {
   /* transition: opacity 1500ms ease-out; */
 }
 
-/* Welcome page */
+/* Welcome */
+
 #welcome, #login {
     height: 100vh;
     display: flex;
@@ -142,22 +236,30 @@ nav button:hover {
 }
 
 .logo img {
- width: 120px;
+ width: 80px;
 }
 
 .logo p {
   font-style: oblique;
   font-weight: 600;
+  font-size: 30px;
+  font-family: 'Dancing Script', cursive;
+}
+
+.logo small {
+  font-family: 'EB Garamond', serif;
 }
 
 .content {
-  width: 70rem;
+  width: 80rem;
 }
 
 .content-inner p {
-  font-size: 48px;
+  font-size: 38px;
   margin-bottom: 10px;
   font-family: 'EB Garamond', serif;
+  text-transform: uppercase;
+  color: brown;
 }
 
 .content-inner span {
@@ -211,28 +313,29 @@ nav button:hover {
   }
 }
 
-/* Main */
+/* tree */
 
-/* Styling fundamentals by How 2 Create - Binary Tree Structure in HTML5 & CSS3*/
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  height: 100vh;
-  display: grid;
+.tree-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
   align-items: center;
-  background: #f5f5f5;
-  /* font-family: "Poppins", sans-serif; */
-  font-family: 'EB Garamond', serif;
+  justify-content: center;
 }
 
 .tree {
+  position: fixed;
+  display: flex;
+  align-items: center;
   width: 100%;
-  height: auto;
+  height: 90%;
   text-align: center;
+  overflow: auto;
+  overflow-y: auto;
+  overflow-x: auto;
+  white-space: nowrap;
+  bottom: 0;
+  z-index: 2;
 }
 
 .tree ul {
@@ -350,8 +453,7 @@ body {
   padding: 30px;
 }
 
-
-
+/* NOT IMPORTANT */
 /* .tree li a:hover, .tree li a:hover img, .tree li a:hover span, .tree li a:hover+ul li a {
   background: #c8e4f8;
   color: #000;
@@ -375,26 +477,47 @@ body {
 
 /* Info */
 
+.info-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .info {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 300px;
-  background: rgb(239, 238, 238);
-  box-shadow: 0px 0px 5px 1px #5f5f5f;
+  padding-top: 5% !important;
+  width: 70%;
+  height: 100vh;
+  background: url('./assets//images/80784-goods-treacle-photography-paper-tart-baked-parchment.png') center;
+  background-size: cover;
   text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #252525;
+  font-family: 'Dancing Script', cursive;
+  font-size: 24px;
 }
 
 .info h1 {
-  background: #555b6e;
+  font-size: 64px;
+  padding: 10px;
 }
 
 .info-1 {
-  background: #adb5bd;
+  padding-top: 15px;
   display: grid;
   grid-template-columns: repeat(2, auto);
   align-items: center;
+  gap: 40px;
+}
+
+.info-1 img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 10px !important;
+  border-radius: 100px;
+  margin: auto;
 }
 
 .info-1 ul {
@@ -412,24 +535,170 @@ body {
 
 .info-2 {
   position: relative;
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 50px;
-  text-align: left;
 }
 
-.info-2 ul li:before {
-  content: "";
-  position: absolute;
-  background-color: #000;
-  min-height: 80px;
-  left: 34px;
-  width: 2px;
+.info-2 h2 {
+  padding-bottom: 10px;
 }
 
+.info-2 ul {
+  list-style-type: none;
+}
+
+.info-2 ul li {
+  padding-top: 40px;
+}
+
+/* RESPONSIVE */
+
+/* MIGHT DELETE */
+@media screen and (min-width: 960px){
+  .tree {
+    justify-content: center;
+  }
+}
+
+/* screen 960px */
+@media screen and (max-width: 960px) {
+
+  .content {
+    width: 50rem;
+  }
+
+  .info {
+    height: 50vh;
+    width: 90%;
+  }
+
+  .info h1 {
+    font-size: 48px;
+  }
+
+  .info-1 {
+    padding: 0;
+  }
+
+  .info-1 img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .info-2 ul li {
+    padding-top: 0px;
+  }
+
+}
+
+/* screen 480px */
+@media screen and (max-width: 480px) {
+
+  /* welcome */
+  .logo img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo p {
+    font-size: 20px;
+  }
+
+  .logo small {
+    font-size: 10px;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .content-inner p {
+    font-size: 24px;
+  }
+  
+  .content-inner span {
+    font-size: 16px;
+  }
+
+  /* enter */
+  .enter span {
+    font-size: 12px;
+  }
+
+  .enter img {
+    width: 24px;
+  }
+
+  /* footer */
+  footer li {
+    font-size: 14px;
+  }
 
 
+  /* tree */
+  .tree ul {
+    padding-top: 10px;
+  }
 
+  .tree li {
+    padding: 5px;
+  }
 
+  .tree a {
+    margin: 0px;
+  }
 
+  .tree a img {
+    display: none !important;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 0px;
+  }
+
+  .tree a span {
+    padding: 0px;
+    color: #252525;
+    font-size: 12px;
+  }
+
+  /* Hover-Section */
+  .tree ul li:hover a {
+    padding: 20px;
+  }
+
+  /* login */
+  #login {
+    padding: 40px;
+    margin: auto;
+    width: 80%;
+    font-size: 18px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.5);
+    max-height: 400px;
+  }
+
+  form input:not(input[type=checkbox]){
+    width: 200px;
+  }
+
+  input[type=email] {
+    width: 200px;
+  }
+
+  input[type=submit] {
+    width: 80%;
+  }
+
+  .info {
+    font-size: 16px;
+    height: 65vh;
+  }
+
+  .info h1 {
+    margin-top: 20px;
+    font-size: 32px;
+  }
+
+}
 

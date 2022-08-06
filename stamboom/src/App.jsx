@@ -1,22 +1,25 @@
-import { Suspense, useEffect, useState } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Routes as Switch } from 'react-router-dom';
+// components
 import Canvas from './components/three.js/Canvas';
-import Tree from './pages/Tree';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Login from './components/Login/Login';
+// pages
 import Welcome from './pages/Welcome';
+import Tree from './pages/Tree';
+import Info from './pages/Info';
+// translation
+import './components/i18n/i18n';
+// css
 import './App.css'
-
+import i18next from 'i18next';
 
 
 function App() {
-  // useEffect(() => {
-  //     i18n.on('languageChanged', (lng) => setLocale(i18n.language));
-  //   }, []);
 
   const [login, setLogin] = useState(false);
-  // const [locale, setLocale] = useState(i18n.language);
+  const [succes, setSucces] = useState(false);
   // token
   const [token, setToken] = useState();
 
@@ -26,20 +29,16 @@ function App() {
 
   return (
     <div className='App'>
-    {/* <LocaleContext.Provider value={{locale, setLocale}}> */}
-      {/* To make sure the components are rendered once i18next and the translation files have been loaded */}
-      {/* <Suspense fallback={<Loading />}> */}
-      <Navbar login={login} onLoginChange={setLogin}/>
+      <Navbar login={login} onLoginChange={setLogin} succes={succes} setSucces={setSucces}/>
         <Canvas />
         <BrowserRouter>
         <Switch>
-          <Route exact path='/(index.html)?' component={!login ? Welcome : Login} />
-          <Route  path='/Stamboom' component={!login ? Tree : Login}/>
+          <Route exact path='/' element={!login ? <Welcome/> : <Login succes={succes} setSucces={setSucces}/>}/>
+          <Route  path='/Stamboom' element={!login ? <Tree/> : <Login succes={succes} setSucces={setSucces}/>}/>
+          <Route  path='/info/:id' element={!login ? <Info/> : <Login succes={succes} setSucces={setSucces}/>}/>
         </Switch>
         </BrowserRouter>
         <Footer />
-        {/* </Suspense>      */}
-    {/* </LocaleContext.Provider> */}
     </div>
   );
 }

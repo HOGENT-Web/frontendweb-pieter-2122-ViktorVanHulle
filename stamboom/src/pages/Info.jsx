@@ -1,8 +1,15 @@
 import React from "react";
-import temp_image from "../../../stamboom/src/mock_data/images/1.png";
+import temp_image from "../assets/images/1.png";
+import { useTranslation } from "react-i18next";
 
 function Info() {
+  // for getting right data:
+  // console.log(location.pathname.split('/')[2])
+
+  const { t } = useTranslation();
+
   return (
+    <div className="info-wrapper">
     <div className="info">
       <h1>John F Kennedy</h1>
       <div className="info-1">
@@ -16,24 +23,25 @@ function Info() {
       <ul>
         <li>
           <div>
-            <h3>Birth</h3>
+            <h2>Birth</h2>
             <p>John F. Kennedy was born on May 29, 1917.</p>
           </div>
         </li>
         <li>
           <div>
-            <h3>Marriage</h3>
+            <h2>Marriage</h2>
             <p>Married in 1953.</p>
           </div>
         </li>
         <li>
           <div>
-            <h3>Death</h3>
+            <h2>Death</h2>
             <p>He died on November 22, 1963.</p>
           </div>
         </li>
       </ul>
       </div>
+    </div>
     </div>
   );
 }

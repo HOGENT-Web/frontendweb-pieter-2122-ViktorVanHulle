@@ -1,3 +1,13 @@
 {
-  "test": "Hallo wereld"
+  "logo": "stamboom",
+  "welcome": "Van Hulle is een belgische familie gealloceerd in Oost-Vlaanderen.",
+  "quote": "\"Familiespreuk hier\" - Viktor Van Hulle",
+  "enter": "enter",
+  "loading": "laden",
+  "login": "Inloggen",
+  "form": "login form",
+  "email": "email",
+  "password": "wachtwoord",
+  "remember": "onthou mij",
+  "submit": "Aanmelden"
 }

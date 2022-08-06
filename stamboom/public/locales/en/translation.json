@@ -1,3 +1,13 @@
 {
-  "test": "Hello world"
+  "logo": "family tree",
+  "welcome": "Van Hulle is a flemish family allocated in East-Flanders.",
+  "quote": "\"Famiily quote here\" - Viktor Van Hulle",
+  "enter": "enter",
+  "loading": "loading",
+  "login": "Login",
+  "form": "login form",
+  "email": "email",
+  "password": "password",
+  "remember": "remember me",
+  "submit": "Log in"
 }

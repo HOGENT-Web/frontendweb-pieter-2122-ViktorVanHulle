@@ -1,3 +1,13 @@
 {
-  "test": "Bonjour le monde"
+  "logo": "pedigree",
+  "welcome": "Van Hulle est une famille flamande située en Flandre Orientale",
+  "quote": "\"sort de famille ici\" - Viktor Van Hulle",
+  "enter": "entrer",
+  "loading": "charger",
+  "login": "Login",
+  "form": "login form",
+  "email": "e-mail",
+  "password": "le mot de passe",
+  "remember": "souviens-toi de moi",
+  "submit": "S'inscrire"
 }

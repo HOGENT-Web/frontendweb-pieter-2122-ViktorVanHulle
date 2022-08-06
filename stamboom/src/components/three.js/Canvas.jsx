@@ -16,14 +16,14 @@ function Canvas(props) {
     );
 
     camera.position.z = 96;
-
+    
     const canvas = document.getElementById("c");
     const renderer = new THREE.WebGLRenderer({
       canvas,
       antialias: true, //3D object looks smooth
     });
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(document.body.clientWidth, document.body.clientHeight);
     document.body.appendChild(renderer.domElement); //append renderer to dom
 
     //ambient light
@@ -64,6 +64,7 @@ function Canvas(props) {
     const animate = () => {
       boxMesh.position.x = mouseX * 0.008;
       boxMesh.position.y = mouseY * 0.008;
+      renderer.setSize(document.body.clientWidth, document.body.clientHeight);
       renderer.render(scene, camera);
       window.requestAnimationFrame(animate); //recalls this funct every single frame
     };

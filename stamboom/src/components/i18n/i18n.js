@@ -1,23 +1,23 @@
 import i18n from "i18next";
-// plugins to i18n
-import Backend from 'i18next-http-backend';
-import I18nextBrowserLanguageDetector from "i18next-browser-languagedetector";
-// ensures i18next works with React
-import { initReactI18next } from "react-i18next";
+import { useTranslation, initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import HttpApi from "i18next-http-backend";
 
-
-// initializing i18n by passing it an object of options
 i18n
-  .use(Backend)
-  .use(I18nextBrowserLanguageDetector)
   .use(initReactI18next) // passes i18n down to react-i18next
+  .use(LanguageDetector)
+  .use(HttpApi)
   .init({
-    fallbackLng: 'en', //if no language is detected
-    debug: true, //debug messages in console, only use in production
-
+    supportedLngs: ["en", "nl", "fr"],
+    fallbackLng: "en",
+    detection: {
+      order: ["htmlTag", "cookie", "localStorage", "path", "subdomain"],
+      caches: ["cookie"],
+    },
     interpolation: {
-      escapeValue: false // react already safes from xss
-    }
+      escapeValue: false, // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
+    },
+    backend: {
+      loadPath: "/locales/{{lng}}/translation.json",
+    },
   });
-
-  export default i18n;
