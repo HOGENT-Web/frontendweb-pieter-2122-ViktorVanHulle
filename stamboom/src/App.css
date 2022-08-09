@@ -98,6 +98,8 @@ footer {
   bottom: 20px;
   left: 20px;
   font-family: 'EB Garamond', serif;
+  color: black;
+  z-index: 100;
 }
 
 footer ul {
@@ -591,6 +593,7 @@ aside button {
   margin-left: 40px;
 }
 
+
 /* RESPONSIVE */
 
 /* MIGHT DELETE */
@@ -667,15 +670,6 @@ aside button {
 
   .enter img {
     width: 24px;
-  }
-
-  /* footer */
-  footer {
-    z-index: 100;
-  }
-
-  footer li {
-    font-size: 14px;
   }
 
 

@@ -9,17 +9,18 @@ import BtnBack from "../btnBack/btnBack";
 import Dropdown from "../Dropdown/Dropdown";
 
 function Navbar(props) {
+  
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
 
+  const location = window.location.href;
+
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
   };
-  console.log(user);
-  const location = window.location.href;
 
   return (
     <nav>

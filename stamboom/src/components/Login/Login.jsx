@@ -90,10 +90,10 @@ function Login(props) {
         <input alt="email" type="email" ref={userRef} onChange={(e) => setUser(e.target.value)} value={user} />
         <label>{t("password")}</label>
         <input alt="password" type="password" onChange={(e) => setPwd(e.target.value)} value={pwd} />
-        <div className="remember">
+        {/* <div className="remember">
           <input type="checkbox" />
           <label>{t("remember")}</label>
-        </div>
+        </div> */}
         <input type="submit" id="login-button" value={t("submit")} />
         <p className="form-footer">
           Need an Account?<br></br>
