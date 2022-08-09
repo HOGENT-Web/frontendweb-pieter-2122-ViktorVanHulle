@@ -1,39 +1,43 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import test_image from "../../assets/images/1.png";
-import { MdLogout } from 'react-icons/md';
+import { MdLogout } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { logout, selectUser } from "../../redux/userSlice";
+import { useSelector } from "react-redux";
+import BtnBack from "../btnBack/btnBack";
+import Dropdown from "../Dropdown/Dropdown";
 
 function Navbar(props) {
-
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
-  const logout = () => {
-    // props.onLoginChange(!props.login);
-    props.setSucces(!props.succes);
-  }
+  const user = useSelector(selectUser);
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+  };
+  console.log(user);
+  const location = window.location.href;
 
   return (
     <nav>
-      {props.succes ? 
-      (
-        <div className="dropdown">
-          <button className="succes">
-            Name
-            <img src={test_image}></img>
-          </button>
-          <div className="dropdown-content">
-              <a>Profile</a>
-              <a onClick={() => logout()}>Log out <MdLogout /></a>
-          </div>
-        </div>
-      )
-      :
-      (
-        <button onClick={() => props.onLoginChange(!props.login)}>
+      {location === "http://localhost:5173/" ? (
+        <></>
+      ) : (
+        <BtnBack location={"/"} />
+      )}
+      {user ? (
+        <Dropdown />
+      ) : (
+        <button
+          className="btn-login"
+          onClick={() => props.onLoginChange(!props.login)}
+        >
           {t("login")}
         </button>
-      ) 
-      }
+      )}
     </nav>
   );
 }

@@ -1,10 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useContext } from "react";
 import { useTranslation } from "react-i18next";
-import AuthContext from "../../context/AuthProvider";
 
+import AuthContext from "../../context/AuthProvider";
 import axios from "../../api/axios";
 const LOGIN_URL = '/auth';
+
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/userSlice";
 
 function Login(props) {
 
@@ -13,6 +16,7 @@ function Login(props) {
   const { setAuth } = useContext(AuthContext);
   const userRef = useRef();
   const errRef = useRef();
+  const dispatch = useDispatch();
 
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
@@ -27,8 +31,16 @@ function Login(props) {
   }, [user, pwd]);
 
   const handleSubmit = async (e) => {
-    // prevent default behavior of form
+    // prevent default behavior of form / prevent website from reloading
     e.preventDefault();
+
+    props.onLoginChange(!props.login);
+
+    dispatch(login({
+      name:user,
+      password:pwd,
+      loggedIn: true,
+    }));
 
     try {
       const response = await axios.post(
@@ -36,7 +48,8 @@ function Login(props) {
         JSON.stringify({user, pwd}),
         {
           headers: { 'Content-Type': 'application/json' },
-          withCredentials: true
+          // was true
+          withCredentials: false,
         });
       console.log(JSON.stringify(response?.data));
       const accesToken = response?.data?.accesToken;
@@ -45,7 +58,7 @@ function Login(props) {
       setAuth({ user, pwd, roles, accesToken });
       setUser('');
       setPwd('');
-      props.setSucces(true);
+
     }catch(err) {
       if(!err?.response) {
         setErrMsg('no Server Response');

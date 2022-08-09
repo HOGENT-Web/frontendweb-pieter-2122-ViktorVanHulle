@@ -14,28 +14,30 @@ import './components/i18n/i18n';
 // css
 import './App.css'
 import i18next from 'i18next';
+// redux
+import { useSelector } from "react-redux";
+import { selectUser } from './redux/userSlice';
 
 
 function App() {
 
   const [login, setLogin] = useState(false);
-  const [succes, setSucces] = useState(false);
+  
   // token
   const [token, setToken] = useState();
-
   // if(!token) {
   //   return <Login setToken={setToken} />
   // }
 
   return (
     <div className='App'>
-      <Navbar login={login} onLoginChange={setLogin} succes={succes} setSucces={setSucces}/>
+      <Navbar login={login} onLoginChange={setLogin} />
         <Canvas />
         <BrowserRouter>
         <Switch>
-          <Route exact path='/' element={!login ? <Welcome/> : <Login succes={succes} setSucces={setSucces}/>}/>
-          <Route  path='/Stamboom' element={!login ? <Tree/> : <Login succes={succes} setSucces={setSucces}/>}/>
-          <Route  path='/info/:id' element={!login ? <Info/> : <Login succes={succes} setSucces={setSucces}/>}/>
+          <Route exact path='/' element={!login ? <Welcome/> : <Login login={login} onLoginChange={setLogin} />}/>
+          <Route  path='/Stamboom' element={!login ? <Tree/> : <Login login={login} onLoginChange={setLogin} />}/>
+          <Route  path='/info/:id' element={!login ? <Info/> : <Login login={login} onLoginChange={setLogin} />}/>
         </Switch>
         </BrowserRouter>
         <Footer />
