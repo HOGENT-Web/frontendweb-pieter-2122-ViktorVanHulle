@@ -1,30 +1,22 @@
 import React from "react";
-import test_image from '../../assets/images/1.png';
-import { MdLogout } from 'react-icons/md';
-import { logout, selectUser } from "../../redux/userSlice";
-import { useSelector, useDispatch } from 'react-redux';
+import test_image from "../../assets/images/1.png";
+import { MdLogout } from "react-icons/md";
+// import { logout, selectUser } from "../../redux/userSlice";
+// import { useSelector, useDispatch } from "react-redux";
 
-function Dropdown() {
-
-  const user = useSelector(selectUser);
-
-  const dispatch = useDispatch();
-
-  const handleLogout = (e) => {
-    e.preventDefault();
-
-    dispatch(logout());
-  }
+function Dropdown(props) {
+  // const user = useSelector(selectUser);
+  // const dispatch = useDispatch();
 
   return (
     <div className="dropdown">
       <button className="succes">
-        {user.name}
+        TEST
         <img src={test_image}></img>
       </button>
       <div className="dropdown-content">
-        <a>Profile</a>
-        <a onClick={(e) => handleLogout(e)}>
+        <a href="/review">Rate Us</a>
+        <a onClick={() => props.handleLogout()}>
           Log out <MdLogout />
         </a>
       </div>

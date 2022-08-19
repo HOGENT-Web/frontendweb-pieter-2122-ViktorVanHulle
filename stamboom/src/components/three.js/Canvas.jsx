@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import * as THREE from "three";
-import { CubeCamera } from "three";
 import background from "../../assets/images/mr-cup-fabien-barral-Fo5dTm6ID1Y-unsplash.jpg";
-import background2 from "../../assets/images/family-tree.png";
 
 function Canvas(props) {
   useEffect(() => {
@@ -15,8 +13,21 @@ function Canvas(props) {
       1000
     );
 
+    // 
+    // NOT USED
+    // 
+    // const loadingManager = new THREE.LoadingManager();
+
+    // loadingManager.onStart = function(url, item, total) {
+    //   console.log(`started loading ${url}`);
+    // }
+
+    // loadingManager.onLoad = function(url, item, total) {
+    //   console.log(`just finished loading ${url}`);
+    // }
+
     camera.position.z = 96;
-    
+
     const canvas = document.getElementById("c");
     const renderer = new THREE.WebGLRenderer({
       canvas,
@@ -44,6 +55,7 @@ function Canvas(props) {
       texture.needsUpdate = true;
     };
     image.src = background;
+
     const boxGeometry = new THREE.BoxGeometry(
       image.naturalWidth / 18,
       image.naturalHeight / 18,

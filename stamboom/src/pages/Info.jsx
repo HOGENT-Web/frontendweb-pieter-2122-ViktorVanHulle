@@ -1,50 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import temp_image from "../assets/images/1.png";
 import { useTranslation } from "react-i18next";
 import Modification from "../components/modification/Modification";
+import { useEffect } from "react";
+import { getMemberById } from "../api/members";
 
 function Info() {
-  // for getting right data:
-  // console.log(location.pathname.split('/')[2])
+  const [member, setMember] = useState(null);
+
+  // for getting id in path
+  const id = location.pathname.split("/")[2];
+
+  useEffect(() => {
+    getMemberById(id).then((data) => {
+      setMember(data);
+    });
+  }, []);
 
   const { t } = useTranslation();
 
   return (
+    member && (
       <div className="info-wrapper">
         <div className="info">
-          <h1>John F Kennedy</h1>
+          <h1>{member.NAME}</h1>
           <div className="info-1">
             <img src={temp_image} alt=""></img>
             <ul>
-              <li>John F Kennedy</li>
-              <li>1917-1963</li>
+              <li>{member.NAME}</li>
+              <li>
+                {member.BIRTH} - {member.DEATH ? member.DEATH : "present"}
+              </li>
             </ul>
           </div>
           <div className="info-2">
-          <ul>
-            <li>
-              <div>
-                <h2>Birth</h2>
-                <p>John F. Kennedy was born on May 29, 1917.</p>
-              </div>
-            </li>
-            <li>
-              <div>
-                <h2>Marriage</h2>
-                <p>Married in 1953.</p>
-              </div>
-            </li>
-            <li>
-              <div>
-                <h2>Death</h2>
-                <p>He died on November 22, 1963.</p>
-              </div>
-            </li>
-          </ul>
+            <ul>
+              <li>
+                <div>
+                  <h2>Biography</h2>
+                  <p>{member.BIOGRAPHY}</p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <Modification />
       </div>
+    )
   );
 }
 

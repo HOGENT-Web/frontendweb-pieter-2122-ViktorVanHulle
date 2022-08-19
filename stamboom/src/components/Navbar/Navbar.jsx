@@ -1,26 +1,24 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import test_image from "../../assets/images/1.png";
-import { MdLogout } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import { logout, selectUser } from "../../redux/userSlice";
-import { useSelector } from "react-redux";
 import BtnBack from "../btnBack/btnBack";
 import Dropdown from "../Dropdown/Dropdown";
+import { useSession, useLogout } from "../../context/AuthProvider";
 
 function Navbar(props) {
-  
+  // const user = useSelector(selectUser);
+
+  const { isAuthed } = useSession();
+  const logout = useLogout();
+
+  const handleLogout = useCallback(() => {
+    logout();
+  }, [logout]);
+
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const user = useSelector(selectUser);
-
   const location = window.location.href;
-
-  const handleLogout = (e) => {
-    e.preventDefault();
-    dispatch(logout());
-  };
 
   return (
     <nav>
@@ -29,8 +27,8 @@ function Navbar(props) {
       ) : (
         <BtnBack location={"/"} />
       )}
-      {user ? (
-        <Dropdown />
+      {isAuthed ? (
+        <Dropdown handleLogout={handleLogout} />
       ) : (
         <button
           className="btn-login"

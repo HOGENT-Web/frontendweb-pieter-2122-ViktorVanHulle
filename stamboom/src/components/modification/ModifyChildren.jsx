@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function ModifyChildren() {
-  return (
-    <>
-      ModifyChildren
-    </>
-  )
+  return <>ModifyChildren</>;
 }
 
-export default ModifyChildren
+export default ModifyChildren;
