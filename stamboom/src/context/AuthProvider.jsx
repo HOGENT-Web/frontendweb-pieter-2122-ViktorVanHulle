@@ -9,6 +9,7 @@ import {
 import * as usersApi from "../api/users";
 import * as api from "../api";
 import config from "../config.json";
+import { useTranslation } from "react-i18next";
 
 const JWT_TOKEN_KEY = config.token_key;
 const AuthContext = createContext();
@@ -52,6 +53,8 @@ export const AuthProvider = ({ children }) => {
   const [error, setError] = useState("");
   const [token, setToken] = useState(localStorage.getItem(JWT_TOKEN_KEY));
   const [user, setUser] = useState(null);
+  const {t} = useTranslation();
+
 
   useEffect(() => {
     setReady(Boolean(token));
@@ -84,17 +87,17 @@ export const AuthProvider = ({ children }) => {
   // }, []);
 
   const login = useCallback(async (email, password) => {
+
     try {
       setLoading(false);
       setError("");
       const { token, user } = await usersApi.login(email, password);
-      console.log(user);
+      // console.log(user);
       setToken(token);
       setUser(user);
       return true;
     } catch (error) {
-      console.error(error);
-      setError("Login failed, try again");
+      setError(t("login_failed"));
       return false;
     } finally {
       setLoading(false);

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import temp_image from "../assets/images/1.png";
+// DB DOES NOT CONTAIN IMAGES YET (BLOB TO SLOW)
+import temp_image from "../assets/images/temp_image.jpg";
 import { useTranslation } from "react-i18next";
 import Modification from "../components/modification/Modification";
 import { useEffect } from "react";
@@ -7,6 +8,7 @@ import { getMemberById } from "../api/members";
 
 function Info() {
   const [member, setMember] = useState(null);
+  const [date, setDate] = useState(null);
 
   // for getting id in path
   const id = location.pathname.split("/")[2];
@@ -14,6 +16,13 @@ function Info() {
   useEffect(() => {
     getMemberById(id).then((data) => {
       setMember(data);
+      // date
+      let split = member.BIRTH.substring(0, 10).split("-")
+      split[2] = parseInt(split[2]) + 1
+      let d = new Date(split[0], split[1] - 1, split[2])
+      let datestring = d.getDate()  + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
+      setDate(datestring);
+
     });
   }, []);
 
@@ -29,7 +38,7 @@ function Info() {
             <ul>
               <li>{member.NAME}</li>
               <li>
-                {member.BIRTH} - {member.DEATH ? member.DEATH : "present"}
+                {t("born")} {date !== null ? date: ""} {member.DEATH ? ", " + t("died") + " " + member.DEATH : ""}
               </li>
             </ul>
           </div>
@@ -37,14 +46,14 @@ function Info() {
             <ul>
               <li>
                 <div>
-                  <h2>Biography</h2>
+                  <h2>{t("bio")}</h2>
                   <p>{member.BIOGRAPHY}</p>
                 </div>
               </li>
             </ul>
           </div>
         </div>
-        <Modification />
+        <Modification id={id}/>
       </div>
     )
   );

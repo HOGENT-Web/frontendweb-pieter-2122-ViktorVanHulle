@@ -7,6 +7,8 @@ import {
   getMemberById,
   getParentsById,
 } from "../../api/members";
+import temp from '../../mock_data/profile_images/-2eeywh.jpg';
+import temp2 from '../../mock_data/profile_images/FB_IMG_1658943483683.jpg';
 
 // Recursive component
 const MembersList = ({ options, children }) => {
@@ -21,7 +23,6 @@ const MembersList = ({ options, children }) => {
         getMemberById(child).then((data) => {
           if (!(subOptions.length === children.length)) {
             temp.push(data);
-            console.log(temp);
             setSubOptions(temp);
           }
         });
@@ -36,11 +37,11 @@ const MembersList = ({ options, children }) => {
           <>
             <li key={index}>
               <a href={"/info/" + option.ID_MEMBER}>
-                {/* <img src="" alt={option.NAME}></img> */}
+                <img src={temp} alt={option.NAME}></img>
                 <span>{option.NAME}</span>
               </a>
               {option.HAS_CHILDREN > 0 && (
-                <ul>{<MembersList children={[1, 4]} />}</ul>
+                <ul>{<MembersList children={[1, 4, 5]} />}</ul>
               )}
             </li>
           </>
@@ -52,11 +53,11 @@ const MembersList = ({ options, children }) => {
               <>
                 <li key={index}>
                   <a href={"/info/" + option.ID_MEMBER}>
-                    {/* <img src="" alt={option.NAME}></img> */}
+                    <img src={temp2} alt={option.NAME}></img>
                     <span>{option.NAME}</span>
                   </a>
                   {option.HAS_CHILDREN > 0 && (
-                    <ul>{<MembersList children={[1, 4]} />}</ul>
+                    <ul>{<MembersList children={[1, 4, 5]} />}</ul>
                   )}
                   {/* <li key={index}>
                     <a href={"/info/" + option.ID_MEMBER}>

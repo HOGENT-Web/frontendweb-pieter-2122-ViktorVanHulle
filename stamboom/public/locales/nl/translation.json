@@ -9,5 +9,30 @@
   "email": "email",
   "password": "wachtwoord",
   "remember": "onthou mij",
-  "submit": "Aanmelden"
+  "submit": "Aanmelden",
+  "bio": "Biografie",
+  "addParent": "Ouder toevoegen",
+  "addChild": "Kind toevoegen",
+  "rate": "Beoordeel ons",
+  "logout": "Uitloggen",
+  "username": "gebruikersnaam",
+  "name": "naam",
+  "login_footer_text1": "Account nodig?",
+  "login_footer_text2": "Stuur een email naar",
+  "errorForBlocking": "Je account is geblokkeerd door te veel gefaalde pogingen",
+  "required": "Dit veld moet ingevuld zijn",
+  "invalid_email": "Onjuist e-mailadres",
+  "more_details": "Meer info zou hulpvol zijn",
+  "message": "bericht",
+  "send": "Verstuur",
+  "born": "Geboren",
+  "died": "overleden",
+  "login_failed": "Login gefaald, probeer opnieuw",
+  "error": "Er deed zich een fout voor, probeer alsjeblieft opnieuw",
+  "contact_msg": "Bedankt voor u bericht, we zullen u binnekort contacteren",
+  "details": "dit is te kort, wees meer gedetailleerd",
+  "addedChild": "Kind toegevoegd!",
+  "addedParent": "Ouder toegevoegd!"
+  
+
 }

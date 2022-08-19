@@ -3,68 +3,89 @@ import { useTranslation } from "react-i18next";
 import StarRatings from "react-star-ratings";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
+import emailjs from "@emailjs/browser";
 
 function Review() {
   const { t } = useTranslation();
   const [rating, setRating] = useState(0);
   const sendDataToEmailApi = (values) => {
-    console.log(values);
-    // emailjs.send(serviceID, templateID, templateParams, publicKey);
-    return true; // to show the send process was successful
+    emailjs
+      .sendForm(
+        "service_idn3pht",
+        "template_b2flvmj",
+        "#review_form",
+        "rklOmW9_DoaP11r6p"
+      )
+      .then(
+        (result) => {
+          console.log("email sent!");
+        },
+        (error) => {
+          throw new Error(t("error"), error.text);
+        }
+      );
+
+    return true;
   };
 
   const handleSubmit = (values) => {
     const emailWasSent = sendDataToEmailApi(values);
     if (emailWasSent) {
-      // resetForm();
-      // setSubmitting(false);:
+      document.getElementById("contact_msg").innerHTML =
+        t("contact_msg");
+      document.getElementById("contact_msg").style.display = "inherit";
     }
   };
 
   const validationSchema = Yup.object({
-    name: Yup.string().required("Required"),
-    email: Yup.string().email("Invalid Email Address").required("Required"),
+    name: Yup.string().required(t("required")),
+    email: Yup.string().email(t("invalid_email")).required(t("required")),
     message: Yup.string()
-      .min(7, "More details are always helpful.")
-      .required("Required"),
+      .min(15, t("details"))
+      .required(t("required")),
   });
 
   return (
     <section id="contact">
-      <h1>Contact Form</h1>
       <div className="form-header">
-        <p>
-          <StarRatings
-            rating={rating}
-            starRatedColor="gold"
-            starEmptyColor="grey"
-            changeRating={(rating) => setRating(rating)}
-            numberOfStars={6}
-            name="rating"
-          />
-        </p>
+        <p id="contact_msg"></p>
+        <h1>Contact Form</h1>
       </div>
       <Formik
         initialValues={{
           name: "",
           email: "",
           message: "",
+          rating: "",
         }}
+        enableReinitialize={true}
         onSubmit={(values) => handleSubmit(values)}
         validationSchema={validationSchema}
       >
         {({ errors, touched }) => (
           <div className="form_container">
-            <Form>
+            <Form id="review_form">
+              <p className="rating">
+                <StarRatings
+                  rating={rating}
+                  starRatedColor="gold"
+                  starEmptyColor="grey"
+                  changeRating={(rating) => setRating(rating)}
+                  numberOfStars={4}
+                  name="rating"
+                  starDimension={40}
+                />
+              </p>
               <div className="input_box">
-                <label htmlFor="userName">{t("username")}</label>
+                <span htmlFor="name">{t("name")}</span>
                 <Field
-                  id="userName"
-                  name="userName"
-                  placeholder={t("username")}
+                  id="name"
+                  name="name"
+                  type="name"
+                  placeholder={t("name")}
                 />
                 {errors.name && touched.name ? (
-                  <div className="errors_container">{errors.userName}</div>
+                  <div className="errors_container">{errors.name}</div>
                 ) : null}
               </div>
               <div className="input_box">
@@ -95,6 +116,7 @@ function Review() {
                 <input type="submit" value={t("send")} />
               </div>
             </Form>
+            <p className="form-footer"></p>
           </div>
         )}
       </Formik>

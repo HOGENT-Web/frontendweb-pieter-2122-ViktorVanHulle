@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
 function BtnBack(props) {

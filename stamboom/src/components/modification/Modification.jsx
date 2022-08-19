@@ -5,36 +5,38 @@ import { selectUser } from "../../redux/userSlice";
 import ModifyParents from "./ModifyParents";
 import ModifyChildren from "./ModifyChildren";
 import { useSession } from "../../context/AuthProvider";
+import { useTranslation } from "react-i18next";
 
-function Modification() {
+function Modification({id}) {
+
+  const {t} = useTranslation();
   const [parents, setParents] = useState(false);
   const [children, setChildren] = useState(false);
 
   const { isAuthed } = useSession();
-  const user = useSelector(selectUser);
 
   return (
     <aside>
       {isAuthed ? (
         parents ? (
-          <ModifyParents />
+          <ModifyParents id={id}/>
         ) : children ? (
-          <ModifyChildren />
+          <ModifyChildren id={id}/>
         ) : (
           <>
             <button
               type="Button"
-              className="btn btn-primary btn-lg"
+              className="btn btn-success btn-lg"
               onClick={setParents}
             >
-              Add parent
+            {t("addParent")}
             </button>
             <button
               type="Button"
               className="btn btn-success btn-lg"
               onClick={setChildren}
             >
-              Add child
+            {t("addChild")}
             </button>
           </>
         )
