@@ -32,6 +32,7 @@ function Navbar(props) {
       ) : (
         <button
           className="btn-login"
+          id="nav_btn_login"
           onClick={() => props.onLoginChange(!props.login)}
         >
           {t("login")}

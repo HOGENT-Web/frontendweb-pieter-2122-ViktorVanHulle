@@ -16,7 +16,7 @@ function Welcome() {
         </div>
         <div className="content">
           <div className="content-inner">
-            <p>{t("welcome")}</p>
+            <p data-cy="title">{t("welcome")}</p>
             <span>{t("quote")}</span>
           </div>
         </div>

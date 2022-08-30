@@ -1,6 +1,7 @@
 // NOT FINISHED
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { create } from '../../api/members';
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 
@@ -11,6 +12,13 @@ function ModifyParents(id) {
   const handleSubmit = (values) => {
     document.getElementById("mod_parents_msg").innerHTML = t("addedParent");
     document.getElementById("mod_parents_msg").style.display = "inherit";
+
+    const hasChildren = 1;
+    const hasParents = 0;
+
+    create({...values, hasChildren, hasParents}).then(data => {
+      console.log(data);
+    })
 
     console.log("Added a child!");
   };
@@ -45,6 +53,7 @@ function ModifyParents(id) {
                   name="name"
                   type="name"
                   placeholder={t("name")}
+                  data-cy="name_input"
                 />
                 {errors.name && touched.name ? (
                   <div className="errors_container">{errors.name}</div>
@@ -57,6 +66,8 @@ function ModifyParents(id) {
                   name="birth"
                   type="date"
                   placeholder={t("birth")}
+                  data-cy="birth_input"
+
                 />
                 {errors.birth && touched.birth ? (
                   <div className="errors_container">{errors.birth}</div>
@@ -81,13 +92,14 @@ function ModifyParents(id) {
                   name="biography"
                   type="text"
                   placeholder={t("bio")}
+                  data-cy="bio_input"
                 />
                 {errors.biography && touched.biography ? (
                   <div className="errors_container">{errors.biography}</div>
                 ) : null}
               </div>
               <div className="input_box">
-                <input type="submit" value={t("addParent")} />
+                <input type="submit" value={t("addParent")} data-cy="submit_parent"/>
               </div>
             </Form>
             <p className="form-footer"></p>

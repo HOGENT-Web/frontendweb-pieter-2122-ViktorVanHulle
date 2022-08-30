@@ -12,6 +12,14 @@ function ModifyChildren(id) {
   const handleSubmit = (values) => {
     document.getElementById("mod_children_msg").innerHTML = t("addedChild");
     document.getElementById("mod_children_msg").style.display = "inherit";
+
+    const hasParents = 1;
+    const hasChildren = 0;
+
+    create({...values, hasChildren, hasParents}).then(data => {
+      console.log(data);
+    })
+
     console.log("Added a child!")
   };
 

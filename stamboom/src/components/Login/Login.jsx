@@ -26,7 +26,6 @@ function Login(props) {
 
   const handleLogin = useCallback(
     async ({ userName, password }) => {
-      console.log("HandleLogin", userName, password);
       const success = await login(userName, password);
 
       if (success) {

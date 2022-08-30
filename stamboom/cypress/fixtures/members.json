@@ -1,0 +1,33 @@
+{
+  "data": [
+      {
+          "ID_MEMBER": 76,
+          "NAME": "Viktor Van Hulle",
+          "BIRTH": "2001-11-13",
+          "DEATH": null,
+          "BIOGRAPHY": "biography test"
+      },
+      {
+          "ID_MEMBER": 85,
+          "NAME": "Emma Van Hulle",
+          "BIRTH": "2001-11-13",
+          "DEATH": null,
+          "BIOGRAPHY": "biography test"
+      },
+      {
+          "ID_MEMBER": 87,
+          "NAME": "Johan Van Hulle",
+          "BIRTH": "2001-11-13",
+          "DEATH": null,
+          "BIOGRAPHY": "biography test"
+      },
+      {
+          "ID_MEMBER": 88,
+          "NAME": "Lukas Van Hulle",
+          "BIRTH": "2001-11-13",
+          "DEATH": null,
+          "BIOGRAPHY": "biography test"
+      }
+  ],
+  "count": 4
+}

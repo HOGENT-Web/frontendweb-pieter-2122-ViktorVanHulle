@@ -7,13 +7,10 @@ import {
   getMemberById,
   getParentsById,
 } from "../../api/members";
-import temp from '../../mock_data/profile_images/-2eeywh.jpg';
-import temp2 from '../../mock_data/profile_images/FB_IMG_1658943483683.jpg';
 
 // Recursive component
 const MembersList = ({ options, children }) => {
   const [subOptions, setSubOptions] = useState([]);
-  const [done, setDone] = useState(false);
 
   useEffect(() => {
     let temp = [];
@@ -30,19 +27,43 @@ const MembersList = ({ options, children }) => {
     }
   });
 
+  // const setChildren = (ID_PARENT) => {
+  //   // simulate a delay
+  //   // getChildren(ID_PARENT).then(data => {
+  //   //   console.log(data);
+  //   // })
+  //   const children = getChildrenById(ID_PARENT).then((data) => {
+  //     data.map((c) => {
+  //       getMemberById(c.ID_CHILD).then((data) => {
+  //         console.log(data);
+  //       });
+  //     });
+  //   });
+
+  //   console.log(children);
+
+  //   console.log("button pressed");
+  // };
+
   return (
     <div>
       {subOptions.length > 0 ? (
         subOptions.map((option, index) => (
           <>
-            <li key={index}>
+            <li key={option.ID_MEMBER}>
               <a href={"/info/" + option.ID_MEMBER}>
-                <img src={temp} alt={option.NAME}></img>
+                <img
+                  src={
+                    window.location.origin + `/images/${option.ID_MEMBER}.jpg`
+                  }
+                  alt={option.NAME}
+                ></img>
                 <span>{option.NAME}</span>
               </a>
               {option.HAS_CHILDREN > 0 && (
-                <ul>{<MembersList children={[1, 4, 5]} />}</ul>
+                <ul>{<MembersList children={[1, 4]} />}</ul>
               )}
+              <div className="subOptions_tree"></div>
             </li>
           </>
         ))
@@ -51,27 +72,27 @@ const MembersList = ({ options, children }) => {
           (option, index) =>
             option.HAS_PARENTS == 0 && (
               <>
-                <li key={index}>
+                <li key={option.ID_MEMBER}>
                   <a href={"/info/" + option.ID_MEMBER}>
-                    <img src={temp2} alt={option.NAME}></img>
-                    <span>{option.NAME}</span>
+                    <img
+                      src={
+                        window.location.origin +
+                        `/images/${option.ID_MEMBER}.jpg`
+                      }
+                      alt={option.NAME}
+                    ></img>
+                    <span data-cy="member_name">{option.NAME}</span>
                   </a>
                   {option.HAS_CHILDREN > 0 && (
                     <ul>{<MembersList children={[1, 4, 5]} />}</ul>
                   )}
-                  {/* <li key={index}>
-                    <a href={"/info/" + option.ID_MEMBER}>
-                      <img src="" alt={option.NAME}></img>
-                      <span>{option.NAME}</span>
-                    </a>
-                  </li> */}
                 </li>
               </>
             )
         )
       ) : (
-        <div class="d-flex justify-content-center">
-          <div class="spinner-border" role="status"></div>
+        <div className="d-flex justify-content-center">
+          <div className="spinner-border" role="status"></div>
         </div>
       )}
     </div>

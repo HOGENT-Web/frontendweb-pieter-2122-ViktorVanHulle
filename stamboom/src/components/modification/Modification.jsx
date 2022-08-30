@@ -27,6 +27,7 @@ function Modification({id}) {
             <button
               type="Button"
               className="btn btn-success btn-lg"
+              id="addParent_button"
               onClick={setParents}
             >
             {t("addParent")}
@@ -34,6 +35,7 @@ function Modification({id}) {
             <button
               type="Button"
               className="btn btn-success btn-lg"
+              id="addChildren_button"
               onClick={setChildren}
             >
             {t("addChild")}
