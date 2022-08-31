@@ -7,6 +7,7 @@ import { getMemberById } from "../api/members";
 function Info() {
   const [member, setMember] = useState(null);
 
+  console.log(member)
   // for getting id in path
   const id = location.pathname.split("/")[2];
 

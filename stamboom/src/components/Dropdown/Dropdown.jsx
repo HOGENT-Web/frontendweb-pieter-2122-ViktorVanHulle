@@ -11,21 +11,21 @@ import { useSelector } from 'react-redux'
 // import { useSelector } from "react-redux";
 
 function Dropdown(props) {
-  const { user } = useSession();
-  const [name, setName] = useState("");
+  // const { user } = useSession();
+  // const [name, setName] = useState("");
 
-  if(user) {
-    setName(user.USERNAME)
-  }
-  useEffect(() => {
+  // if(user) {
+  //   setName(user.USERNAME)
+  // }
+  // useEffect(() => {
 
-  }, []);
+  // }, []);
 
 
   return (
     <div className="dropdown" data-cy="dropdown">
       <button className="succes">
-        {name}
+        {/* {name} */}
         <img src={window.location.origin + `/images/user.png`}></img>
       </button>
       <div className="dropdown-content">
