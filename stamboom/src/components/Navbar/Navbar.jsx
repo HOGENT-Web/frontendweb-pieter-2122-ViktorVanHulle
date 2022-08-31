@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import BtnBack from "../btnBack/btnBack";
-import Dropdown from "../Dropdown/Dropdown";
-import { useSession, useLogout } from "../../context/AuthProvider";
+import BtnBack from "./../btnBack/BtnBack";
+import Dropdown from "./../Dropdown/Dropdown";
+import { useSession, useLogout } from "./../../context/AuthProvider";
 
 function Navbar(props) {
   // const user = useSelector(selectUser);
